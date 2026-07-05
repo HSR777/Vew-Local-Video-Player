@@ -578,6 +578,37 @@
   abRepeatBtn.addEventListener('click', handleAbRepeatClick);
 
   // ---------------------------------------------------------------
+  // Auto-hide cursor & center play/pause icon when idle
+  // ---------------------------------------------------------------
+  const IDLE_DELAY = 2000; // ms of no mouse movement before hiding
+  let idleTimer = null;
+
+  function showPlayerOverlay() {
+    playerWrap.classList.remove('is-idle');
+  }
+
+  function scheduleIdleHide() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      if (!video.paused) playerWrap.classList.add('is-idle');
+    }, IDLE_DELAY);
+  }
+
+  playerWrap.addEventListener('mousemove', () => {
+    showPlayerOverlay();
+    scheduleIdleHide();
+  });
+  playerWrap.addEventListener('mouseleave', () => {
+    clearTimeout(idleTimer);
+    showPlayerOverlay();
+  });
+  video.addEventListener('play', scheduleIdleHide);
+  video.addEventListener('pause', () => {
+    clearTimeout(idleTimer);
+    showPlayerOverlay();
+  });
+
+  // ---------------------------------------------------------------
   // Upload handling
   // ---------------------------------------------------------------
   uploadFolderBtn.addEventListener('click', () => folderInput.click());

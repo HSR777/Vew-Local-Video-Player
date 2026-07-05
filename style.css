@@ -219,6 +219,15 @@ body.theater main#mainLayout {
 
 /* misc */
 #centerPlayBtn.hidden { display: none !important; }
+
+/* Auto-hide cursor & center play/pause icon after idle (see script.js idle timer) */
+#playerWrap.is-idle {
+  cursor: none;
+}
+#playerWrap.is-idle #centerPlayBtn {
+  opacity: 0 !important;
+  pointer-events: none;
+}
 video::-webkit-media-controls { display: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
