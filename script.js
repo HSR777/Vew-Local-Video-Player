@@ -639,7 +639,8 @@
   });
 
   // ---------------------------------------------------------------
-  // Keyboard shortcuts (space = play/pause, arrows = seek/volume)
+  // Keyboard shortcuts (space = play/pause, arrows = seek/volume,
+  // n/p = next/previous video)
   // ---------------------------------------------------------------
   window.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
@@ -648,6 +649,8 @@
     if (e.code === 'ArrowLeft') video.currentTime = Math.max(0, video.currentTime - 5);
     if (e.key.toLowerCase() === 'f') fullscreenBtn.click();
     if (e.key.toLowerCase() === 't') toggleTheater();
+    if (e.key.toLowerCase() === 'n') goNext({ userTriggered: true });
+    if (e.key.toLowerCase() === 'p') goPrev();
   });
 
   // ---------------------------------------------------------------
