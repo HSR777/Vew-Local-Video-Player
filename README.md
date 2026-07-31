@@ -81,8 +81,6 @@ Tidak memerlukan instalasi apa pun.
 |---|---|
 | `Spasi` | Putar / jeda |
 | `←` / `→` | Mundur / maju 5 detik |
-| `N` | Video berikutnya |
-| `P` | Video sebelumnya |
 | `F` | Layar penuh |
 | `T` | Mode teater |
 
