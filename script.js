@@ -471,6 +471,10 @@
   video.addEventListener('loadedmetadata', () => {
     updateSeekUI();
     updateAbRangeVisual();
+    if (video.src && !video.classList.contains('hidden')) {
+      emptyState.classList.add('hidden');
+      centerPlayBtn.classList.remove('hidden');
+    }
   });
 
   function seekTo(clientX) {
